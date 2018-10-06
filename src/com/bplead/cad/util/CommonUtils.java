@@ -81,7 +81,7 @@ public class CommonUtils {
 			number = workable.toString();
 		}
 
-		Assert.notNull(AccessControlHelper.manager.hasAccess(workable, AccessPermission.MODIFY),
+		Assert.isTrue(AccessControlHelper.manager.hasAccess(workable, AccessPermission.MODIFY),
 				CommonUtils.toLocalizedMessage(CustomPrompt.ACCESS_DENIED, number, AccessPermission.MODIFY));
 
 		Folder checkOutFolder = WorkInProgressHelper.service.getCheckoutFolder();

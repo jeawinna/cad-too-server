@@ -145,7 +145,7 @@ public class DocumentUtils implements RemoteAccess {
 
 	public static WTDocument save(Document document) throws Exception {
 		Assert.notNull(document, "Document is required");
-		Assert.notNull(AccessControlHelper.manager.hasAccess(document, AccessPermission.CREATE), CommonUtils
+		Assert.isTrue(AccessControlHelper.manager.hasAccess(document, AccessPermission.CREATE), CommonUtils
 				.toLocalizedMessage(CustomPrompt.ACCESS_DENIED, document.getNumber(), AccessPermission.CREATE));
 
 		WTDocument doc = WTDocument.newWTDocument();
@@ -398,7 +398,7 @@ public class DocumentUtils implements RemoteAccess {
 		Assert.notNull(document, "WTDocument does not exist");
 
 		try {
-			Assert.notNull(AccessControlHelper.manager.hasAccess(document, AccessPermission.DOWNLOAD),
+			Assert.isTrue(AccessControlHelper.manager.hasAccess(document, AccessPermission.DOWNLOAD),
 					CommonUtils.toLocalizedMessage(CustomPrompt.ACCESS_DENIED, document.getNumber(),
 							AccessPermission.DOWNLOAD));
 		} catch (WTException e) {
